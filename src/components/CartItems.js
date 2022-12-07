@@ -5,7 +5,10 @@ import { deleteCartProduct, updateCartProduct } from '../api'
 const CartItemCard = ({ jwt, products, product }) => {
     const { productId, qty } = product;
     const [newQty, setNewQty] = useState(qty);
-
+   
+    function refreshPage(){
+        window.location.reload();
+    } 
 
     if (productId) {
         const [cart_Product] = products.filter((product) => product.id === productId);
@@ -31,6 +34,7 @@ const CartItemCard = ({ jwt, products, product }) => {
                                 if (confirm('Are you sure you want to delete?')) {
                                     deleteCartProduct(jwt, productId);
                                     console.log('delete cart button pressed')
+                                    // refreshPage()
                                 }
                             }}>
                             Remove
